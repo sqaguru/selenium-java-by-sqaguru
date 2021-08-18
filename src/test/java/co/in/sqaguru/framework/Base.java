@@ -14,8 +14,10 @@ public class Base {
 
 	@BeforeClass
 	public void beforeClass() {
+		String projectPath = System.getProperty("user.dir");
+		System.out.println("project path: "+projectPath);
 		System.setProperty("webdriver.chrome.driver",
-				"C:\\StellarAlgo_QA\\TestAutomation\\TAStellarAlgo\\src\\test\\resources\\driver\\chrome\\chromedriver.exe");
+				projectPath+"\\resources\\drivers\\chromedriver.exe");
 		driver = new ChromeDriver();
 
 		driver.manage().deleteAllCookies();
@@ -38,7 +40,7 @@ public class Base {
 		String sheetName = "TestData2";
 		return ExcelReader.readExcelData(tdFilePath, sheetName);
 	}
-	
+
 	@AfterClass
 	public void afterClass() {
 		driver.quit();
